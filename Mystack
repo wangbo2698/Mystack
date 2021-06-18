@@ -1,0 +1,55 @@
+public class MyStack {
+
+    public int[] elem;
+    public int top;//usedSize
+
+    public MyStack() {
+        this.elem = new int[10];
+        this.top = 0;//-1
+    }
+
+    public boolean isFull() {
+        if(this.top == this.elem.length) {
+            return true;
+        }
+        return false;
+    }
+
+    public void push(int val) {
+        if(this.isFull()) {
+            //扩容
+            return;
+        }
+        this.elem[this.top] = val;
+        this.top++;
+    }
+
+    public int pop() throws UnsupportedOperationException{
+        if(this.empty()) {
+           throw new UnsupportedOperationException("栈为空！");
+        }
+
+        //下来之后 不需要写else 因为抛出异常 就不执行了
+        int old = this.elem[this.top-1];
+        //this.elem[this.top-1] = null
+        this.top--;
+        return old;
+    }
+
+    public int peek() {
+        if(this.empty()) {
+            throw new UnsupportedOperationException("栈为空！");
+        }
+
+        //下来之后 不需要写else 因为抛出异常 就不执行了
+        //int old = this.elem[this.top-1];
+        //this.elem[this.top-1] = null
+        return this.elem[this.top-1];
+    }
+
+    public boolean empty() {
+        return this.top == 0;
+    }
+
+
+}
